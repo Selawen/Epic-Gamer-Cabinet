@@ -10,13 +10,6 @@ public class PlayerMovement : MonoBehaviour
     public KeyCode back = KeyCode.S;
     public KeyCode left = KeyCode.A;
     public KeyCode right = KeyCode.D;
-
-    public KeyCode jump = KeyCode.Space;
-
-    public float moveSpeed;
-    public float jumpForce;
-    public bool grounded;
-
     Rigidbody rb;
 
     private void Awake()
@@ -36,39 +29,37 @@ public class PlayerMovement : MonoBehaviour
 
     void HandleInput()
     {
-        Vector3 vel = Vector3.zero;
-        if(Input.GetKey(forward))
+        Quaternion rot = transform.rotation;
+        Quaternion roth = Quaternion.identity;
+        Quaternion rotv = Quaternion.identity;
+
+        if (Input.GetKey(forward))
         {
-            vel += transform.forward * moveSpeed;
-        }   
+            rotv = Quaternion.Euler(0, 0, 0);
+            rot = Quaternion.Euler(0, 0, 0);
+
+        }
         if (Input.GetKey(back))
         {
-            vel -= transform.forward * moveSpeed;
-        }
-        if (Input.GetKey(left))
-        {
-            vel -= transform.right * moveSpeed;
-
+            rotv = Quaternion.Euler(0, 180, 0);
+            rot = Quaternion.Euler(0, 180, 0);
         }
         if (Input.GetKey(right))
         {
-            vel += transform.right * moveSpeed;
+            roth = Quaternion.Euler(0, 90, 0);
+            rot = Quaternion.Euler(0, 90, 0);
         }
-        rb.velocity = new Vector3(vel.x, rb.velocity.y, vel.z);
-
-        if (Input.GetKeyDown(jump) && grounded)
+        if (Input.GetKey(left))
         {
-            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            roth = Quaternion.Euler(0, 270, 0);
+            rot = Quaternion.Euler(0, 270, 0);
         }
-    }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.CompareTag("Ground")) { grounded = true; }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.collider.CompareTag("Ground")) { grounded = false; }
+        if ((Input.GetKey(left) || Input.GetKey(right)) && (Input.GetKey(forward) || Input.GetKey(back)))
+        {
+            rot = Quaternion.Lerp(roth, rotv, 0.5f);
+        }
+        
+        transform.rotation = rot;
     }
 }
