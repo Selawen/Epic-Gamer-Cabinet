@@ -10,7 +10,18 @@ public class PlayerMovement : MonoBehaviour
     public KeyCode back = KeyCode.S;
     public KeyCode left = KeyCode.A;
     public KeyCode right = KeyCode.D;
+
+    public KeyCode yellow = KeyCode.I, green = KeyCode.L, blue = KeyCode.K, red = KeyCode.J;
+    public bool freeRange;
+    public float moveSpeed;
+    public float fireRate;
+
+    bool canShoot;
+
+    public GameObject bullet;
+    public Transform spawnPoint;
     Rigidbody rb;
+    Vector3 startPos;
 
     private void Awake()
     {
@@ -19,15 +30,61 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        freeRange = false;
+        startPos = transform.position;
         rb = GetComponent<Rigidbody>();
+        StartCoroutine(HandleShootInput());
     }
 
     private void Update()
     {
-        HandleInput();
+        if (freeRange) { HandleMoveInput(); }
     }
 
-    void HandleInput()
+    IEnumerator HandleShootInput()
+    {
+        while (true)
+        {
+            canShoot = true;
+
+            while (!freeRange)
+            {
+                yield return null;
+            }
+            while (!Input.GetKeyDown(yellow) && !Input.GetKeyDown(red) && !Input.GetKeyDown(blue) && !Input.GetKeyDown(green))
+            {
+                yield return null;
+            }
+
+            if(Input.GetKeyDown(yellow) && canShoot)
+            {
+                Bullet b = Instantiate(bullet, spawnPoint).GetComponent<Bullet>();
+                b.Init(GhostColor.Yellow);
+                canShoot = false;
+            }
+            if (Input.GetKeyDown(red) && canShoot)
+            {
+                Bullet b = Instantiate(bullet, spawnPoint).GetComponent<Bullet>();
+                b.Init(GhostColor.Red);
+                canShoot = false;
+            }
+            if (Input.GetKeyDown(green) && canShoot)
+            {
+                Bullet b = Instantiate(bullet, spawnPoint).GetComponent<Bullet>();
+                b.Init(GhostColor.Green);
+                canShoot = false;
+            }
+            if (Input.GetKeyDown(blue) && canShoot)
+            {
+                Bullet b = Instantiate(bullet, spawnPoint).GetComponent<Bullet>();
+                b.Init(GhostColor.Blue);
+                canShoot = false;
+            }
+            yield return new WaitForSeconds(1 / fireRate);
+        }
+    }
+
+    void HandleMoveInput()
     {
         Quaternion rot = transform.rotation;
         Quaternion roth = Quaternion.identity;
@@ -59,7 +116,32 @@ public class PlayerMovement : MonoBehaviour
         {
             rot = Quaternion.Lerp(roth, rotv, 0.5f);
         }
+
+        if (Input.GetKey(left) || Input.GetKey(right) || Input.GetKey(forward) || Input.GetKey(back))
+        {
+            rb.velocity = transform.forward * moveSpeed;
+        }
+        else
+        {
+            rb.velocity = Vector3.zero;
+        }
         
         transform.rotation = rot;
+    }
+
+    public void SetMove(bool canMove)
+    {
+        freeRange = canMove;
+        if (!freeRange) { transform.position = startPos; transform.rotation = Quaternion.identity; rb.velocity = Vector3.zero; }
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if(collision.collider.CompareTag("Ghost"))
+        {
+            GameManager.Instance.BoostValue -= 0.1f;
+            Destroy(collision.collider.GetComponentInParent<Ghost>().gameObject);
+        }
+                
     }
 }
