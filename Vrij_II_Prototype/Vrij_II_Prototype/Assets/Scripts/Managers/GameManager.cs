@@ -71,6 +71,10 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        foreach (var joystick in Input.GetJoystickNames())
+        Debug.Log(joystick);
+
+
         song = GetComponentInChildren<AudioSource>();
         beatTime = 60.0f / bpm;
         beatDistance = distanceBetweenBeatLines / beatTime;

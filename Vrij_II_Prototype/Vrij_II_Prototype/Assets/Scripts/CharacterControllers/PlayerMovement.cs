@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -55,26 +56,27 @@ public class PlayerMovement : MonoBehaviour
             {
                 yield return null;
             }
-
-            if(Input.GetKeyDown(yellow) && canShoot)
+            
+            var gamepad = Gamepad.current;
+            if ((Input.GetKeyDown(yellow) || gamepad.yButton.wasPressedThisFrame) && canShoot)
             {
                 Bullet b = Instantiate(bullet, spawnPoint).GetComponent<Bullet>();
                 b.Init(GhostColor.Yellow);
                 canShoot = false;
             }
-            if (Input.GetKeyDown(red) && canShoot)
+            if ((Input.GetKeyDown(red) || gamepad.xButton.wasPressedThisFrame) && canShoot)
             {
                 Bullet b = Instantiate(bullet, spawnPoint).GetComponent<Bullet>();
                 b.Init(GhostColor.Red);
                 canShoot = false;
             }
-            if (Input.GetKeyDown(green) && canShoot)
+            if ((Input.GetKeyDown(green) || gamepad.bButton.wasPressedThisFrame) && canShoot)
             {
                 Bullet b = Instantiate(bullet, spawnPoint).GetComponent<Bullet>();
                 b.Init(GhostColor.Green);
                 canShoot = false;
             }
-            if (Input.GetKeyDown(blue) && canShoot)
+            if ((Input.GetKeyDown(blue) || gamepad.aButton.wasPressedThisFrame) && canShoot)
             {
                 Bullet b = Instantiate(bullet, spawnPoint).GetComponent<Bullet>();
                 b.Init(GhostColor.Blue);
