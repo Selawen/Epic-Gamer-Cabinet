@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: destroyKey
       value: 108
       objectReference: {fileID: 0}
+    - target: {fileID: 6792818086617262366, guid: 82678e1d0faa35d418f9a8de7588199f, type: 3}
+      propertyPath: destroyKey2
+      value: B
+      objectReference: {fileID: 0}
     - target: {fileID: 6792818086617262433, guid: 82678e1d0faa35d418f9a8de7588199f, type: 3}
       propertyPath: m_RootOrder
       value: 0

@@ -58,6 +58,7 @@ public class PlayerMovement : MonoBehaviour
             }
             
             var gamepad = Gamepad.current;
+            Debug.Log(gamepad.name);
             if ((Input.GetKeyDown(yellow) || gamepad.yButton.wasPressedThisFrame) && canShoot)
             {
                 Bullet b = Instantiate(bullet, spawnPoint).GetComponent<Bullet>();

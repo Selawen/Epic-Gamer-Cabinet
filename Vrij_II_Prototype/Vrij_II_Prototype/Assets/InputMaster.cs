@@ -74,7 +74,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 {
                     ""name"": ""up"",
                     ""id"": ""8b00fd28-30d7-40d0-8710-9a73e39748f7"",
-                    ""path"": ""<Gamepad>/leftStick"",
+                    ""path"": ""<XInputController>/leftStick/up"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""XBox one controller"",
@@ -85,7 +85,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 {
                     ""name"": ""down"",
                     ""id"": ""67592751-db9d-4668-9af2-c97b1884df64"",
-                    ""path"": ""<Gamepad>/leftStick"",
+                    ""path"": ""<XInputController>/leftStick/down"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""XBox one controller"",
@@ -96,7 +96,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 {
                     ""name"": ""left"",
                     ""id"": ""beba80cd-b0c2-4ae0-8be8-48dfcde4ea38"",
-                    ""path"": ""<Gamepad>/leftStick"",
+                    ""path"": ""<XInputController>/leftStick/left"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""XBox one controller"",
@@ -107,7 +107,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 {
                     ""name"": ""right"",
                     ""id"": ""1b4147ac-3f8e-4ad1-b263-880bceb142a3"",
-                    ""path"": ""<Gamepad>/leftStick"",
+                    ""path"": ""<XInputController>/leftStick/right"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""XBox one controller"",
@@ -118,7 +118,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""ee2710a4-866c-4ba9-ad1b-cad22e650017"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""path"": ""<XInputController>/buttonNorth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""XBox one controller"",
@@ -129,7 +129,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""051a7ead-bd23-4508-8cc1-233780b33d08"",
-                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""path"": ""<XboxOneGampadiOS>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""XBox one controller"",
@@ -140,7 +140,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""b75aa956-f766-434a-ba11-5b956e1a4e04"",
-                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""path"": ""<XboxOneGampadiOS>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""XBox one controller"",
@@ -151,7 +151,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""a65c357b-5421-4fb8-bc9b-ec8be368de56"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""path"": ""<XboxOneGampadiOS>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""XBox one controller"",

@@ -1,13 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Note : MonoBehaviour
 {
     public float moveSpeed;
     public KeyCode destroyKey;
+    public string destroyKey2;
     public Transform destroyPos;
     bool canBePlayed;
+
+    bool pressed = false;
 
     public void Init(Transform dp)
     {
@@ -29,6 +33,14 @@ public class Note : MonoBehaviour
         }
 
         transform.position += transform.forward * moveSpeed * Time.deltaTime;
-        if (Input.GetKeyDown(destroyKey) && canBePlayed) { GameManager.Instance.PlayNote(this); }
+        if ((Input.GetKeyDown(destroyKey) ||  (Gamepad.current[destroyKey2].IsPressed() && !pressed)) && canBePlayed)
+        {
+            GameManager.Instance.PlayNote(this);
+            pressed = true;
+        }
+        if (!Gamepad.current[destroyKey2].IsPressed() && pressed)
+        {
+            pressed = false;
+        }
     }
 }
