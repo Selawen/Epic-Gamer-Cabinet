@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
 
         StartGameplay();
 
-        BoostValue = 0.5f;
+        BoostValue = 0.95f;
         Score = 0;
 
     }
