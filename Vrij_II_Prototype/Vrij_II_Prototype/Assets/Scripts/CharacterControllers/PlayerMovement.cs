@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
     public KeyCode right = KeyCode.D;
 
     public KeyCode yellow = KeyCode.I, green = KeyCode.L, blue = KeyCode.K, red = KeyCode.J;
+    public bool yPressed = false, bPressed = false, aPressed = false, xPressed = false;
+
     public bool freeRange;
     public float moveSpeed;
     public float fireRate;
@@ -45,40 +48,49 @@ public class PlayerMovement : MonoBehaviour
     {
         while (true)
         {
+            var gamepad = Gamepad.current;
+            Debug.Log(gamepad.name);
             canShoot = true;
 
             while (!freeRange)
             {
                 yield return null;
             }
-            while (!Input.GetKeyDown(yellow) && !Input.GetKeyDown(red) && !Input.GetKeyDown(blue) && !Input.GetKeyDown(green))
+            while (!Input.GetKeyDown(yellow) && !Input.GetKeyDown(red) && !Input.GetKeyDown(blue) && !Input.GetKeyDown(green) && !gamepad["Y"].IsPressed() && !gamepad["X"].IsPressed() && !gamepad["A"].IsPressed() && !gamepad["B"].IsPressed())
             {
+                Debug.Log("no button pressed");
+                yPressed = false; xPressed = false; aPressed = false; bPressed = false;
                 yield return null;
             }
-
-            if(Input.GetKeyDown(yellow) && canShoot)
+            
+            
+            if ((Input.GetKeyDown(yellow) || (gamepad["Y"].IsPressed() && !yPressed)) && canShoot)
             {
                 Bullet b = Instantiate(bullet, spawnPoint).GetComponent<Bullet>();
                 b.Init(GhostColor.Yellow);
                 canShoot = false;
+                yPressed = true;
             }
-            if (Input.GetKeyDown(red) && canShoot)
+            if ((Input.GetKeyDown(red) || (gamepad["X"].IsPressed() && !xPressed)) && canShoot)
             {
                 Bullet b = Instantiate(bullet, spawnPoint).GetComponent<Bullet>();
                 b.Init(GhostColor.Red);
                 canShoot = false;
+                xPressed = true;
             }
-            if (Input.GetKeyDown(green) && canShoot)
+            if ((Input.GetKeyDown(green) || (gamepad["B"].IsPressed() && !bPressed)) && canShoot)
             {
                 Bullet b = Instantiate(bullet, spawnPoint).GetComponent<Bullet>();
                 b.Init(GhostColor.Green);
                 canShoot = false;
+                bPressed = false;
             }
-            if (Input.GetKeyDown(blue) && canShoot)
+            if ((Input.GetKeyDown(blue) || (gamepad["A"].IsPressed() && !aPressed)) && canShoot)
             {
                 Bullet b = Instantiate(bullet, spawnPoint).GetComponent<Bullet>();
                 b.Init(GhostColor.Blue);
                 canShoot = false;
+                aPressed = true;
             }
             yield return new WaitForSeconds(1 / fireRate);
         }

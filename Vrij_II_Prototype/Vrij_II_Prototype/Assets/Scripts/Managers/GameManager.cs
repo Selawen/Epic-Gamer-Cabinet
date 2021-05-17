@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -64,6 +65,15 @@ public class GameManager : MonoBehaviour
     public GameObject ghost;
     public float spawnTimeMin, spawnTimeMax;
 
+
+    [Header("gamepad buttons")]
+    public bool yPressed = false;
+    public bool bPressed = false;
+    public bool aPressed = false;
+    public bool xPressed = false;
+
+
+
     private void Awake()
     {
         Instance = this;
@@ -71,6 +81,10 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        foreach (var joystick in Input.GetJoystickNames())
+        //Debug.Log(joystick);
+
+
         song = GetComponentInChildren<AudioSource>();
         beatTime = 60.0f / bpm;
         beatDistance = distanceBetweenBeatLines / beatTime;
@@ -81,9 +95,14 @@ public class GameManager : MonoBehaviour
 
         StartGameplay();
 
-        BoostValue = 0.5f;
+        BoostValue = 0.95f;
         Score = 0;
 
+    }
+
+    private void Update()
+    {
+       
     }
 
     void StartGameplay()
