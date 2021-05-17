@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
         { 
             boostValue = Mathf.Min(1.0f, value); boostBar.HPValue = boostValue; 
             if (boostValue <= 0.0f) { StopCoroutine(playRoutine); Die(); } 
-            if (boostValue >= 1.0f) { FreeRoamMode(); } 
+            if (boostValue >= 1.0f) { FreeRoamMode(); Camera.main.transform.parent.rotation = Quaternion.identity; } 
         }
         //Ah yes, readable code
     }
@@ -173,6 +173,7 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
 
+        Camera.main.transform.parent.rotation = Quaternion.Euler(0, 45, 0);
         PlayerMovement.Instance.SetMove(false);
         spawnNotes = true;
         foreach(Ghost g in FindObjectsOfType<Ghost>())
