@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/General Assets/Scenes/GameSelectionMenu.unity
+    guid: 230bf07f239cca34a920b29f3e267004
+  - enabled: 1
+    path: Assets/Games/MainMenus/Zimzalabim_Zimzalaboo.unity
+    guid: 00dee3700bf376d4e9123fd9c72f0594
+  - enabled: 1
+    path: Assets/Games/Zimzalabim_Zimzalaboo/ZimZim.unity
+    guid: df101f89ac629884dbd5ef21bf372040
   m_configObjects: {}

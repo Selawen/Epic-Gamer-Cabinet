@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        foreach (var joystick in Input.GetJoystickNames())
+        //foreach (var joystick in Input.GetJoystickNames())
         //Debug.Log(joystick);
 
 
@@ -102,7 +102,19 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-       
+        
+        var joystick = Joystick.current;
+
+        if (joystick["button5"].IsPressed())
+        {
+            Debug.Log("btn 5 pressed");
+        }
+        if (joystick.IsActuated()){
+            Debug.Log(joystick.stick.ReadValue());
+        }
+        var gamepad = Gamepad.current;
+        //Debug.Log(gamepad.name);
+        //Debug.Log(gamepad["leftstick"].ToString());
     }
 
     void StartGameplay()
