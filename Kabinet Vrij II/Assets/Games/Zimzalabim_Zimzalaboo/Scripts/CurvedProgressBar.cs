@@ -15,7 +15,7 @@ public class CurvedProgressBar : MonoBehaviour
         get => fillState;
         set
         {
-            fillState = value;
+            fillState = Mathf.Max(0.0f, Mathf.Min(1.0f, value));
             RecalculatePoints();
         }
     }
@@ -37,8 +37,9 @@ public class CurvedProgressBar : MonoBehaviour
         {
             positions[i] = new Vector3(
                 Mathf.Cos(angle),
-                0.0f,
-                Mathf.Sin(angle)
+                Mathf.Sin(angle),
+                0.0f
+                
             );
             angle += angleIncrement;
         }

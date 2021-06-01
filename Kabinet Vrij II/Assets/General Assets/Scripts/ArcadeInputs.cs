@@ -6,7 +6,7 @@ public static class ArcadeInputs
 {
     public static string Red()
     {
-        return "button1";
+        return "button5";
     }
 
     public static string Green()
