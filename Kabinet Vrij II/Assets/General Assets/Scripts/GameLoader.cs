@@ -14,13 +14,22 @@ public class GameLoader : MonoBehaviour
 
     string path = "Assets/Games/MainMenus"; //Main menus of new games are placed in this folder
 
-
-    private void Awake()
+    /*
+    private void OnValidate()
     {
-        DontDestroyOnLoad(this);
         GetGames();
+        RemoveOldButtons();
         AddButtons();
     }
+    */
+    private void Awake()
+    {
+        //DontDestroyOnLoad(this);
+        GetGames();
+        RemoveOldButtons();
+        AddButtons();
+    }
+    
 
     public void GetGames()
     {
@@ -33,7 +42,7 @@ public class GameLoader : MonoBehaviour
             FileInfo[] info = dir.GetFiles("*.unity");
             if (info.Length < 1)
             {
-                Debug.LogError("no scenes found");
+                Debug.Log("no scenes found");
             }
             //save path to scenes
             foreach (FileInfo f in info)
@@ -42,6 +51,14 @@ public class GameLoader : MonoBehaviour
                 string s = f.Name;
                 gameMenuScenes.Add(s);
             }
+        }
+    }
+
+    public void RemoveOldButtons()
+    {
+        foreach (LoadSceneButton button in gameSelectPanel.GetComponentsInChildren<LoadSceneButton>())
+        {
+            Destroy(button.gameObject);
         }
     }
     
