@@ -9,12 +9,12 @@ using TMPro;
 [ExecuteAlways]
 public class GameLoader : MonoBehaviour
 {
+    public bool reloadGames;
     public List<string> gameMenuScenes = new List<string>();
     [SerializeField] private GameObject gameButtonPrefab;
     [SerializeField] private GameObject gameSelectPanel;
 
     string path = "Assets/Games/MainMenus"; //Main menus of new games are placed in this folder
-
 
     public void LoadGames()
     {
@@ -23,14 +23,15 @@ public class GameLoader : MonoBehaviour
         AddButtons();
     }
 
-
     public void Start()
     {
-        //DontDestroyOnLoad(this);        
-        RemoveOldButtons();
-        GetGames();
-        AddButtons();
-        AssetDatabase.SaveAssets();
+        if (reloadGames)
+        {
+            //DontDestroyOnLoad(this);        
+            RemoveOldButtons();
+            GetGames();
+            AddButtons();
+        }
     }
 
 
