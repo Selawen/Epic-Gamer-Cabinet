@@ -1,32 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public static class ArcadeInputs
 {
-    public static string Red()
+    public static bool Red()
     {
-        return "button5";
+        return Joystick.current["button5"].IsPressed() || Input.GetKeyDown(KeyCode.J);
     }
 
-    public static string Green()
+    public static bool Green()
     {
-        return "button2";
+        return Joystick.current["button2"].IsPressed() || Input.GetKeyDown(KeyCode.I);
     }
 
-    public static string Blue()
+    public static bool Blue()
     {
-        return "button3";
+        return Joystick.current["button3"].IsPressed() || Input.GetKeyDown(KeyCode.K);
     }
 
-    public static string Yellow()
+    public static bool Yellow()
     {
-        return "button4";
+        return Joystick.current["button4"].IsPressed() || Input.GetKeyDown(KeyCode.U);
     }
 
-    public static string Select()
+    public static bool Select()
     {
-        return "button12";
+        return Joystick.current["button12"].IsPressed() || Input.GetKeyDown(KeyCode.Space);
     }
 
 }
