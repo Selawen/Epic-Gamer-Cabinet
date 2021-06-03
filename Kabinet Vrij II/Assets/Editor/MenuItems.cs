@@ -19,28 +19,32 @@ public class MenuItems : EditorWindow
 
     private void OnGUI()
     {
-        EditorGUILayout.TextField("Name of your Game: ", gameName);
+        gameName = EditorGUILayout.TextField("Name of your Game: ", gameName);
 
         if (GUILayout.Button("Add Game"))
         {
-            
+            //create folder to put new game files in
             string path = "Assets/Games/" + gameName;
-            if (!Directory.Exists(path)) Directory.CreateDirectory(path);
-            //string guid = AssetDatabase.CreateFolder(path, gameName);
-            //string newFolderPath = AssetDatabase.GUIDToAssetPath(guid);
-            
+            string guid = AssetDatabase.CreateFolder("Assets/Games", gameName);
+            string newFolderPath = AssetDatabase.GUIDToAssetPath(guid);
+                        
             Scene newMenuScene;
         
-
+            //create menu for game from template
             SceneTemplateAsset sceneTemplate = (SceneTemplateAsset)AssetDatabase.LoadAssetAtPath("Assets/General Assets/Scenes/Templates/MenuTemplate.scenetemplate", typeof(SceneTemplateAsset));
             if (sceneTemplate == null) Debug.Log("template not found");
-            else newMenuScene = SceneTemplateService.Instantiate(sceneTemplate, true).scene;
+            else newMenuScene = SceneTemplateService.Instantiate(sceneTemplate, true, "Assets/Games/MainMenus/"+gameName+"Menu.unity").scene;
 
+            GameObject.Find("PlayButton");
+
+            //create scene for actual game
             var newGameScene = EditorSceneManager.NewScene(NewSceneSetup.DefaultGameObjects, NewSceneMode.Additive);
             newGameScene.name = gameName;
-            AssetDatabase.MoveAsset(newGameScene.path, path+".unity");
+            EditorSceneManager.SaveScene(newGameScene, path+"/"+gameName+".unity");
 
             AssetDatabase.SaveAssets();
+            Debug.Log("Game successfully added");
+            Close();
         }
     }
 
