@@ -33,7 +33,7 @@ public class MenuItems : EditorWindow
             //create menu for game from template
             SceneTemplateAsset sceneTemplate = (SceneTemplateAsset)AssetDatabase.LoadAssetAtPath("Assets/General Assets/Scenes/Templates/MenuTemplate.scenetemplate", typeof(SceneTemplateAsset));
             if (sceneTemplate == null) {Debug.Log("template not found"); return;}
-        else newMenuScene = SceneTemplateService.Instantiate(sceneTemplate, true, "Assets/Games/MainMenus/" + gameName + "Menu.unity").scene;
+        else newMenuScene = SceneTemplateService.Instantiate(sceneTemplate, true, "Assets/Games/MainMenus/" + gameName + "~Menu.unity").scene;
 
             GameObject.Find("PlayButton");
 

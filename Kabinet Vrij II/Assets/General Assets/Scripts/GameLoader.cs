@@ -71,7 +71,8 @@ public class GameLoader : MonoBehaviour
             button.transform.SetParent(gameSelectPanel.transform, false);
 
             string gameTitle = gamePath;
-            gameTitle = gamePath.Split('.')[0];
+            gameTitle = gamePath.Split('~')[0];
+            gameTitle = gameTitle.Split('.')[0];
             gameTitle = gameTitle.Replace('_', ' ');
 
             button.GetComponent<LoadSceneButton>().scenepath = path + "/" + gamePath;
