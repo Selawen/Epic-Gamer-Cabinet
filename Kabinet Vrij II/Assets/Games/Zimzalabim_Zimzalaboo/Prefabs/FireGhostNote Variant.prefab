@@ -40,7 +40,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2319780570148323967}
   m_LocalRotation: {x: -0, y: -0.39768118, z: -0, w: 0.9175236}
-  m_LocalPosition: {x: 0.8358595, y: 3.09, z: -3.661736}
+  m_LocalPosition: {x: 0.8358595, y: 5.4, z: -3.661736}
   m_LocalScale: {x: 6.541686, y: 6.541686, z: 6.541686}
   m_Children:
   - {fileID: 7456176146865695706}
@@ -9338,6 +9338,7 @@ GameObject:
   - component: {fileID: 8951509301377561728}
   - component: {fileID: 8387827779340693484}
   - component: {fileID: 6745024910702913125}
+  - component: {fileID: 8643328718467347933}
   m_Layer: 0
   m_Name: Fireghost2d
   m_TagString: Untagged
@@ -9353,7 +9354,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8325730666538258331}
   m_LocalRotation: {x: -0.6530167, y: -0.2712365, z: -0.2712365, w: 0.6530167}
-  m_LocalPosition: {x: -4.1201267, y: 2.99, z: -0.0599882}
+  m_LocalPosition: {x: -4.1201267, y: 5.3, z: -0.0599882}
   m_LocalScale: {x: 0.50782865, y: 0.50782865, z: 0.50782865}
   m_Children: []
   m_Father: {fileID: 341983567865347272}
@@ -9429,6 +9430,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8643328718467347933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8325730666538258331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: d32cc95183cef9d419dba8f10a600939, type: 2}
 --- !u!1001 &230881238114573091
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 8021452782330775740}
   - component: {fileID: 836181615717344373}
   - component: {fileID: 1546535183763235816}
+  - component: {fileID: 8754035979029427444}
   m_Layer: 0
   m_Name: Stoneghost2d
   m_TagString: Untagged
@@ -116,6 +117,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8754035979029427444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4011757526583076284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: e13c582722e989f448807cbe52c17ab2, type: 2}
 --- !u!1001 &854464261036770770
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2731292915399498145}
   - component: {fileID: 7857743153662734269}
   - component: {fileID: 8381960108450527211}
+  - component: {fileID: 5293972104599229505}
   m_Layer: 0
   m_Name: Waterghist2d
   m_TagString: Untagged
@@ -103,6 +104,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5293972104599229505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2821147493041788325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 1741b5c90f61d48418680ee857dd8c21, type: 2}
 --- !u!114 &5385157325862278988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,6 +241,14 @@ PrefabInstance:
     - target: {fileID: 19800000, guid: 37bd362d795dc334d8676f4781d66578, type: 3}
       propertyPath: InitialModule.startColor.minColor.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 37bd362d795dc334d8676f4781d66578, type: 3}
+      propertyPath: InitialModule.startLifetime.minScalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19900000, guid: 37bd362d795dc334d8676f4781d66578, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 19900000, guid: 37bd362d795dc334d8676f4781d66578, type: 3}
       propertyPath: m_Materials.Array.size

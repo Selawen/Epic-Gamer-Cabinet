@@ -14874,6 +14874,7 @@ GameObject:
   - component: {fileID: 6867846734605120771}
   - component: {fileID: 3975547561301255264}
   - component: {fileID: 5306902433418955043}
+  - component: {fileID: 7629304036568308874}
   m_Layer: 0
   m_Name: Witch2d
   m_TagString: Untagged
@@ -14966,6 +14967,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7629304036568308874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3717695948428025402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 306d95a3a59b71a4295eaf76069d3d9f, type: 2}
 --- !u!135 &7889488446198011743
 SphereCollider:
   m_ObjectHideFlags: 0
