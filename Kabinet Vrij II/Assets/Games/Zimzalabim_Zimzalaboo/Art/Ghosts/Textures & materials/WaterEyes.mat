@@ -22,7 +22,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: WaterEyes
   m_Shader: {fileID: -6465566751694194690, guid: def4e0296da7fb2499f5205a050e34cf, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -90,6 +90,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_383253527bec4c7e9f4882fcc0387fb2: -0.44
+    - Vector1_3ec0c7e565004e72836bcd3e85ad0ce2: 1
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -117,6 +118,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
+    - Color_7d86adc1368a4447816a0e8bb6b78dfd: {r: 1, g: 1, b: 1, a: 0}
     - Color_ca62aebd9f1749c394278029c674901e: {r: 0, g: 0.22122633, b: 0.6320754, a: 1}
     - Color_dfb3ed3898764177bbc0914b8b2e07e2: {r: 0.029903853, g: 0.09390858, b: 0.3773585, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
