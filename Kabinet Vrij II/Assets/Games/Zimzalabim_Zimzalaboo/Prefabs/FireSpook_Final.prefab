@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6327972902877553219}
   - component: {fileID: 6327972902877553218}
   m_Layer: 0
-  m_Name: FireSpook
+  m_Name: FireSpook_Final
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
