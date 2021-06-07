@@ -456,8 +456,8 @@ MonoBehaviour:
   SwitchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: Assets/Games/Music/zimzalabim/zimzalabim.fspro
-  sourceBankPath: Assets\Games\Music\zimzalabim\Build
+  sourceProjectPath: Assets/General Assets/Music/zimzalabim/zimzalabim.fspro
+  sourceBankPath: Assets\General Assets\Music\zimzalabim\Build
   SourceBankPathUnformatted: 
   AutomaticEventLoading: 1
   BankLoadType: 0
@@ -478,7 +478,9 @@ MonoBehaviour:
   Plugins: []
   MasterBanks:
   - Master
-  Banks: []
+  Banks:
+  - Hit
+  - Music
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0
