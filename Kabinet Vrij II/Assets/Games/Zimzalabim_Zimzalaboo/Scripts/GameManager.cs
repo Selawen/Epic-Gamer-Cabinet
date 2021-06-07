@@ -175,8 +175,10 @@ public class GameManager : MonoBehaviour
         if (maintheme.isValid())
         {
             maintheme.getPlaybackState(out playbackState);
-            while (playbackState != FMOD.Studio.PLAYBACK_STATE.STOPPED)
+            while (playbackState == FMOD.Studio.PLAYBACK_STATE.PLAYING)
             {
+                maintheme.getPlaybackState(out playbackState);
+
                 //while (song.isPlaying)
                 //{
                 int i = Random.Range(0, 5);
