@@ -2854,6 +2854,18 @@ PrefabInstance:
       propertyPath: m_Positions.Array.data[32].z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1785250206115121895, guid: c5ccd186b84e544499d7102781d8291b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3717695948428025402, guid: c5ccd186b84e544499d7102781d8291b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3975547561301255264, guid: c5ccd186b84e544499d7102781d8291b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4616716395939976203, guid: c5ccd186b84e544499d7102781d8291b, type: 3}
       propertyPath: m_RootOrder
       value: 1
