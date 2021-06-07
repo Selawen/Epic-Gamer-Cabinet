@@ -6,6 +6,7 @@ using TMPro;
 public class JoystickExample : MonoBehaviour
 {
     public TextMeshProUGUI textInput1;
+    public TextMeshProUGUI textInput2;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,13 @@ public class JoystickExample : MonoBehaviour
     void Update()
     {
         textInput1.text = "Joystick: " + ArcadeInputs.Stick().ToString() +
+            "\n Red button: " + ArcadeInputs.Red() +
+            "\n Green button: " + ArcadeInputs.Green() +
+            "\n Blue button: " + ArcadeInputs.Blue() +
+            "\n Yellow button: " + ArcadeInputs.Yellow() +
+            "\n Select button: " + ArcadeInputs.Select();
+
+        textInput2.text = "Joystick: " + ArcadeInputs.StickP2().ToString() +
             "\n Red button: " + ArcadeInputs.Red() +
             "\n Green button: " + ArcadeInputs.Green() +
             "\n Blue button: " + ArcadeInputs.Blue() +

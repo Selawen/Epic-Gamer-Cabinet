@@ -23,6 +23,7 @@ public class Note : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //move note
         transform.position += transform.forward * moveSpeed * Time.deltaTime;
     }
 }

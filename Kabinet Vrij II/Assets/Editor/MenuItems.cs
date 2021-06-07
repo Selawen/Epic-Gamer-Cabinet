@@ -42,8 +42,8 @@ public class MenuItems : EditorWindow
             newGameScene.name = gameName;
             EditorSceneManager.SaveScene(newGameScene, path+"/"+gameName+".unity");
             Debug.Log(newGameScene.path);
+           
             //add new scenes to build settings
-
             string[] ScenesList = new string[] {  newMenuScene.path, newGameScene.path};
 
             EditorBuildSettingsScene[] original = EditorBuildSettings.scenes;

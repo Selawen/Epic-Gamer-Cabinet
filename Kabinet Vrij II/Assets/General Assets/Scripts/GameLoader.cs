@@ -15,16 +15,10 @@ public class GameLoader : MonoBehaviour
     [SerializeField] private GameObject gameSelectPanel;
 
     string path = "Assets/Games/MainMenus"; //Main menus of new games are placed in this folder
-
-    public void LoadGames()
-    {
-        RemoveOldButtons();
-        GetGames();
-        AddButtons();
-    }
-
+    
     public void Start()
     {
+        //if reload games box is set to true in inspector, 
         if (reloadGames)
         {
             //DontDestroyOnLoad(this);        
@@ -34,7 +28,9 @@ public class GameLoader : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// get references to the main menu scenes found in Assets/Games/MainMenus
+    /// </summary>
     public void GetGames()
     {
         //get all scenes from folder
@@ -54,7 +50,9 @@ public class GameLoader : MonoBehaviour
         }
 
     }
-
+    /// <summary>
+    /// remove the buttons that were already there
+    /// </summary>
     public void RemoveOldButtons()
     {
         gameMenuScenes = new List<string>();
@@ -64,6 +62,9 @@ public class GameLoader : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// make new buttons
+    /// </summary>
     public void AddButtons()
     {
         foreach (string gamePath in gameMenuScenes)
