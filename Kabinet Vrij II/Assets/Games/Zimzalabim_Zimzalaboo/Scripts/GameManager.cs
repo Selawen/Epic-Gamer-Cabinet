@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
+using FMODUnity;
 
 public class GameManager : MonoBehaviour
 {
@@ -26,7 +27,7 @@ public class GameManager : MonoBehaviour
         set { boostValue = Mathf.Min(1.0f, value); boostBar.FillState = boostValue; if (BoostValue <= 0) Fail(); }
     }
     public float beatTime, beatDistance, distanceBetweenBeatLines;
-    AudioSource song;
+    // AudioSource song;
     public float maxDis;
 
     
@@ -59,10 +60,17 @@ public class GameManager : MonoBehaviour
     Coroutine playRoutine;
     private bool redPressed, greenPressed, yellowPressed, bluePressed;
 
+
+    FMOD.Studio.EventInstance playerState;
+    FMOD.Studio.EventInstance maintheme;
+    FMOD.Studio.PLAYBACK_STATE playbackState;
+
     // Start is called before the first frame update
     void Start()
     {
-        song = Camera.main.GetComponentInChildren<AudioSource>();
+        maintheme = FMODUnity.RuntimeManager.CreateInstance("event:/level1_theme");
+        maintheme.start();
+        //song = Camera.main.GetComponentInChildren<AudioSource>();
         beatTime = 60.0f / bpm;
         beatDistance = distanceBetweenBeatLines / beatTime;
         maxDis = 2 * beatDistance;
@@ -76,6 +84,19 @@ public class GameManager : MonoBehaviour
 
         Score = 0;
     }
+
+
+    void OnDestroy()
+    {
+        //StopAllPlayerEvents();
+
+        //--------------------------------------------------------------------
+        // 6: This shows how to release resources when the unity object is 
+        //    disabled.
+        //--------------------------------------------------------------------
+        playerState.release();
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -140,7 +161,7 @@ public class GameManager : MonoBehaviour
 
     void StartGameplay()
     {
-        song.PlayDelayed(0.0f);
+        //song.PlayDelayed(0.0f);
         StartCoroutine(SpawnWait());
         //StartCoroutine(SpawnGhosts());
     }
@@ -151,16 +172,23 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator SpawnRandom()
     {
-        while (song.isPlaying)
+        if (maintheme.isValid())
         {
-            int i = Random.Range(0, 5);
-            if (i < 4)
+            maintheme.getPlaybackState(out playbackState);
+            while (playbackState != FMOD.Studio.PLAYBACK_STATE.STOPPED)
             {
-                GameObject spawned = Instantiate(prefabArr[i], spawnArr[i]);
-                spawned.GetComponent<Note>().moveSpeed = beatDistance;
-                activeNotes.Add(spawned.GetComponent<Note>()) ;
+                //while (song.isPlaying)
+                //{
+                int i = Random.Range(0, 5);
+                if (i < 4)
+                {
+                    GameObject spawned = Instantiate(prefabArr[i], spawnArr[i]);
+                    spawned.GetComponent<Note>().moveSpeed = beatDistance;
+                    activeNotes.Add(spawned.GetComponent<Note>());
+                }
+                yield return new WaitForSecondsRealtime(beatTime);
+                //}
             }
-            yield return new WaitForSecondsRealtime(beatTime);
         }
         EndScreen();
     }
@@ -210,11 +238,24 @@ public class GameManager : MonoBehaviour
     {
         EndPanel.SetActive(true);
         Time.timeScale = 0;
+        maintheme.release();
+        maintheme.clearHandle();
     }
 
     public void Fail()
     {
         failPanel.SetActive(true);
         Time.timeScale = 0;
+        maintheme.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        maintheme.release();
+        maintheme.clearHandle();
+    }
+
+    void StopAllPlayerEvents()
+    {
+        FMOD.Studio.Bus musicBus = FMODUnity.RuntimeManager.GetBus("bank:/Music");
+        FMOD.Studio.Bus hitBus = FMODUnity.RuntimeManager.GetBus("bank:/Hit");
+        musicBus.stopAllEvents(FMOD.Studio.STOP_MODE.IMMEDIATE);
+        hitBus.stopAllEvents(FMOD.Studio.STOP_MODE.IMMEDIATE);
     }
 }
