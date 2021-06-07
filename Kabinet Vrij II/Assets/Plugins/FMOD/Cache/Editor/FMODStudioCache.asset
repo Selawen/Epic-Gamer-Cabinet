@@ -1,5 +1,51 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8829928528987235795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/awesome
+  m_EditorClassIdentifier: 
+  Path: event:/awesome
+  guid: 2ab75c517b389546bdc5dc6c4a1768be
+  Banks:
+  - {fileID: -3193024225857408347}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 374
+--- !u!114 &-6665652581809179507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/good
+  m_EditorClassIdentifier: 
+  Path: event:/good
+  guid: eb759703bd10e04fa51e2c47d7fa8ebd
+  Banks:
+  - {fileID: -3193024225857408347}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 374
 --- !u!114 &-5594889332698512505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39,7 +85,7 @@ MonoBehaviour:
   Path: Assets/General Assets/Music/zimzalabim/Build/Desktop/Hit.bank
   Name: Hit
   StudioPath: bank:/Hit
-  lastModified: 637586669127665878
+  lastModified: 637586758841132441
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -58,7 +104,7 @@ MonoBehaviour:
   Path: Assets/General Assets/Music/zimzalabim/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637586669128255799
+  lastModified: 637586758842310531
   LoadResult: 0
   FileSizes: []
   Exists: 1
@@ -81,13 +127,43 @@ MonoBehaviour:
   - {fileID: 7716341200012051015}
   EditorEvents:
   - {fileID: -5594889332698512505}
+  - {fileID: -8829928528987235795}
+  - {fileID: 5435472770464776921}
+  - {fileID: 813519994403591685}
+  - {fileID: 7734370015318300962}
+  - {fileID: -6665652581809179507}
+  - {fileID: 5116180974300782193}
+  - {fileID: 155099105100079702}
   EditorParameters: []
   MasterBanks:
   - {fileID: -1003052899320047698}
   StringsBanks:
   - {fileID: 266947945638983011}
-  stringsBankWriteTime: 637586669128274706
+  stringsBankWriteTime: 637586758842350091
   cacheVersion: 6
+--- !u!114 &155099105100079702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/meh
+  m_EditorClassIdentifier: 
+  Path: event:/meh
+  guid: f29384758821a5479dd421f3a7855c93
+  Banks:
+  - {fileID: -3193024225857408347}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 374
 --- !u!114 &266947945638983011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,12 +179,35 @@ MonoBehaviour:
   Path: Assets/General Assets/Music/zimzalabim/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637586669128274706
+  lastModified: 637586758842350091
   LoadResult: 0
   FileSizes:
   - Name: Desktop
-    Value: 842
+    Value: 1126
   Exists: 1
+--- !u!114 &813519994403591685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/miss
+  m_EditorClassIdentifier: 
+  Path: event:/miss
+  guid: b31b502a842f334fbf51c5f0d4e8860f
+  Banks:
+  - {fileID: -3193024225857408347}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 374
 --- !u!114 &4144290443486067432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,6 +231,52 @@ MonoBehaviour:
   MinDistance: 0
   MaxDistance: 0
   Length: 102642
+--- !u!114 &5116180974300782193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/oof
+  m_EditorClassIdentifier: 
+  Path: event:/oof
+  guid: ebc849e417f18a4fa2e73b415813796a
+  Banks:
+  - {fileID: -3193024225857408347}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 374
+--- !u!114 &5435472770464776921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/great
+  m_EditorClassIdentifier: 
+  Path: event:/great
+  guid: 795107f4ce75934fa3da4cd6a882826b
+  Banks:
+  - {fileID: -3193024225857408347}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 444
 --- !u!114 &6777497019688174656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,10 +311,33 @@ MonoBehaviour:
   Path: Assets/General Assets/Music/zimzalabim/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 637586669128863150
+  lastModified: 637586758843110905
   LoadResult: 0
   FileSizes: []
   Exists: 1
+--- !u!114 &7734370015318300962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/perfect
+  m_EditorClassIdentifier: 
+  Path: event:/perfect
+  guid: dbc784b1db7f424c9fdff1915797afc2
+  Banks:
+  - {fileID: -3193024225857408347}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 0
+  MaxDistance: 0
+  Length: 374
 --- !u!114 &7816988877792120542
 MonoBehaviour:
   m_ObjectHideFlags: 0
