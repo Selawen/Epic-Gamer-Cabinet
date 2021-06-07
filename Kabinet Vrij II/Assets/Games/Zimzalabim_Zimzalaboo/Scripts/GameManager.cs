@@ -94,43 +94,43 @@ public class GameManager : MonoBehaviour
         switch (activeNotes[0].noteColour)
         {
             case (Note.Type.RED):
-                if (Joystick.current[ArcadeInputs.Red()].IsPressed() && !redPressed)
+                if (ArcadeInputs.Red() && !redPressed)
                 {
                     redPressed = true;
                     PlayNote(activeNotes[0]);
-                } else if (!Joystick.current[ArcadeInputs.Red()].IsPressed())
+                } else if (!ArcadeInputs.Red())
                 {
                     redPressed = false;
                 }
                 break;
             case (Note.Type.YELLOW):
-                if (Joystick.current[ArcadeInputs.Yellow()].IsPressed() && !yellowPressed)
+                if (ArcadeInputs.Yellow() && !yellowPressed)
                 {
                     yellowPressed = true;
                     PlayNote(activeNotes[0]);
-                } else if (!Joystick.current[ArcadeInputs.Yellow()].IsPressed())
+                } else if (!ArcadeInputs.Yellow())
                 {
                     yellowPressed = false;
                 }
                 break;
             case (Note.Type.GREEN):
-                if (Joystick.current[ArcadeInputs.Green()].IsPressed() && !greenPressed)
+                if (ArcadeInputs.Green() && !greenPressed)
                 {
                     greenPressed = true;
                     PlayNote(activeNotes[0]);
                 }
-                else if (!Joystick.current[ArcadeInputs.Green()].IsPressed())
+                else if (!ArcadeInputs.Green())
                 {
                     greenPressed = false;
                 }
                 break;
             case (Note.Type.BLUE):
-                if (Joystick.current[ArcadeInputs.Blue()].IsPressed() && !bluePressed)
+                if (ArcadeInputs.Blue() && !bluePressed)
                 {
                     bluePressed = true;
                     PlayNote(activeNotes[0]);
                 }
-                else if (!Joystick.current[ArcadeInputs.Blue()].IsPressed())
+                else if (!ArcadeInputs.Blue())
                 {
                     bluePressed = false;
                 }

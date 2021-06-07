@@ -6,45 +6,64 @@ using UnityEngine.SceneManagement;
 using System.IO;
 using TMPro;
 
+[ExecuteAlways]
 public class GameLoader : MonoBehaviour
 {
+    public bool reloadGames;
     public List<string> gameMenuScenes = new List<string>();
     [SerializeField] private GameObject gameButtonPrefab;
     [SerializeField] private GameObject gameSelectPanel;
 
     string path = "Assets/Games/MainMenus"; //Main menus of new games are placed in this folder
 
-
-    private void Awake()
+    public void LoadGames()
     {
-        DontDestroyOnLoad(this);
+        RemoveOldButtons();
         GetGames();
         AddButtons();
     }
 
-    public void GetGames()
+    public void Start()
     {
-        //if the list has not been created/filled yet, fill it
-        if (gameMenuScenes.Count < 1)
+        if (reloadGames)
         {
-
-            //get all scenes from folder
-            DirectoryInfo dir = new DirectoryInfo(path);
-            FileInfo[] info = dir.GetFiles("*.unity");
-            if (info.Length < 1)
-            {
-                Debug.LogError("no scenes found");
-            }
-            //save path to scenes
-            foreach (FileInfo f in info)
-            {
-                //string s = path + "/" + f.Name;
-                string s = f.Name;
-                gameMenuScenes.Add(s);
-            }
+            //DontDestroyOnLoad(this);        
+            RemoveOldButtons();
+            GetGames();
+            AddButtons();
         }
     }
-    
+
+
+    public void GetGames()
+    {
+        //get all scenes from folder
+        DirectoryInfo dir = new DirectoryInfo(path);
+        FileInfo[] info = dir.GetFiles("*.unity");
+
+        if (info.Length < 1)
+        {
+            Debug.Log("no scenes found");
+        }
+        //save path to scenes
+        foreach (FileInfo f in info)
+        {
+            //string s = path + "/" + f.Name;
+            string s = f.Name;
+            gameMenuScenes.Add(s);
+        }
+
+    }
+
+    public void RemoveOldButtons()
+    {
+        gameMenuScenes = new List<string>();
+        foreach (LoadSceneButton button in gameSelectPanel.GetComponentsInChildren<LoadSceneButton>())
+        {
+            DestroyImmediate(button.gameObject);
+        }
+    }
+
     public void AddButtons()
     {
         foreach (string gamePath in gameMenuScenes)
@@ -53,7 +72,8 @@ public class GameLoader : MonoBehaviour
             button.transform.SetParent(gameSelectPanel.transform, false);
 
             string gameTitle = gamePath;
-            gameTitle = gamePath.Split('.')[0];
+            gameTitle = gamePath.Split('~')[0];
+            gameTitle = gameTitle.Split('.')[0];
             gameTitle = gameTitle.Replace('_', ' ');
 
             button.GetComponent<LoadSceneButton>().scenepath = path + "/" + gamePath;
