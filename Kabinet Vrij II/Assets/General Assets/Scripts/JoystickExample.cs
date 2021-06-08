@@ -25,10 +25,10 @@ public class JoystickExample : MonoBehaviour
             "\n Select button: " + ArcadeInputs.Select();
 
         textInput2.text = "Joystick: " + ArcadeInputs.StickP2().ToString() +
-            "\n Red button: " + ArcadeInputs.Red() +
-            "\n Green button: " + ArcadeInputs.Green() +
-            "\n Blue button: " + ArcadeInputs.Blue() +
-            "\n Yellow button: " + ArcadeInputs.Yellow() +
-            "\n Select button: " + ArcadeInputs.Select();
+            "\n Red button: " + ArcadeInputs.RedP2() +
+            "\n Green button: " + ArcadeInputs.GreenP2() +
+            "\n Blue button: " + ArcadeInputs.BlueP2() +
+            "\n Yellow button: " + ArcadeInputs.YellowP2() +
+            "\n Select button: " + ArcadeInputs.SelectP2();
     }
 }

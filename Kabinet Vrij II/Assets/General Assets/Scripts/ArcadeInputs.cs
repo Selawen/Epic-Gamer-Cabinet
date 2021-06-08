@@ -171,6 +171,53 @@ public static class ArcadeInputs
         return SerialVector2().x == 1;
     }
 
+
+    /// <summary>
+    /// returns true if red button player 2 is pressed
+    /// </summary>
+    /// <returns></returns>
+    public static bool RedP2()
+    {
+        return SerialButton(Note.Type.RED);
+    }
+    /// <summary>
+    /// returns true if green button player 2 is pressed
+    /// </summary>
+    /// <returns></returns>
+    public static bool GreenP2()
+    {
+        return SerialButton(Note.Type.GREEN);
+    }
+
+    /// <summary>
+    /// returns true if blue button player 2 is pressed
+    /// </summary>
+    /// <returns></returns>
+    public static bool BlueP2()
+    {
+        return SerialButton(Note.Type.BLUE);
+    }
+
+    /// <summary>
+    /// returns true if yellow button player 2 is pressed
+    /// </summary>
+    /// <returns></returns>
+    public static bool YellowP2()
+    {
+        return SerialButton(Note.Type.YELLOW);
+    }
+
+    /// <summary>
+    /// returns true if select button player 2 is pressed
+    /// </summary>
+    /// <returns></returns>
+    public static bool SelectP2()
+    {
+        return SerialSelectButton();
+
+    }
+
+
     private static Vector2 SerialVector2()
     {
         if (!arduinoSerial.IsOpen)
@@ -218,7 +265,7 @@ public static class ArcadeInputs
         return new Vector2(x, y);
     }
 
-    private static int SerialButton(Note.Type colour)
+    private static bool SerialButton(Note.Type colour)
     {
         if (!arduinoSerial.IsOpen)
         {
@@ -230,6 +277,20 @@ public static class ArcadeInputs
         string buttonString = arduinoSerial.ReadLine().Split('~')[1];
         buttonString = buttonString.Split(',')[(int)colour];
 
-        return 0;
+        return buttonString == "1";
+    }
+
+    private static bool SerialSelectButton()
+    {
+        if (!arduinoSerial.IsOpen)
+        {
+            arduinoSerial.Open();
+            arduinoSerial.ReadTimeout = 100;
+            arduinoSerial.Handshake = Handshake.None;
+        }
+
+        string buttonString = arduinoSerial.ReadLine().Split('~')[2];
+
+        return buttonString == "1";
     }
 }

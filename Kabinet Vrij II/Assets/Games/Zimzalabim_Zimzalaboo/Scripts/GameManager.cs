@@ -7,17 +7,19 @@ using FMODUnity;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private int bpm = 93;
+    [SerializeField] private int bpm = 140;
 
     [Header("UI")]
     public TextMeshProUGUI noteResultText;
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI failScore;
+    public TextMeshProUGUI endScore;
 
     public Color perfectColor, awesomeColor, greatColor, goodColor, mehColor, oofColor, missColor;
     public CurvedProgressBar boostBar;
 
     public GameObject failPanel;
-    public GameObject EndPanel;
+    public GameObject endPanel;
 
     [Header("Boost")]
     [SerializeField] float boostValue = 0.7f;
@@ -195,7 +197,7 @@ public class GameManager : MonoBehaviour
         EndScreen();
     }
 
-    public void PlayNote(Note note)
+    private void PlayNote(Note note)
     {
         float d = 0;
 
@@ -229,28 +231,46 @@ public class GameManager : MonoBehaviour
         Destroy(note.gameObject);
     }
 
-    public void MissNote(Note note)
+    private void MissNote(Note note)
     {
         BoostValue -= 0.125f;
         noteResultText.text = "Miss!"; noteResultText.color = missColor;
         Destroy(note.gameObject);
     }
 
-    public void EndScreen()
+    private void EndScreen()
     {
-        EndPanel.SetActive(true);
-        Time.timeScale = 0;
-        maintheme.release();
-        maintheme.clearHandle();
+        if (!failPanel.activeSelf)
+        {
+            Highscores.SaveHighscores(score);
+            endScore.text = "score: " + score.ToString();
+            endPanel.SetActive(true);
+            Time.timeScale = 0;
+            maintheme.release();
+            maintheme.clearHandle();
+        }
     }
 
-    public void Fail()
+    private void Fail()
     {
+        Highscores.SaveHighscores(score);
+        failScore.text = "score: " + score.ToString();
         failPanel.SetActive(true);
         Time.timeScale = 0;
         maintheme.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         maintheme.release();
         maintheme.clearHandle();
+    }
+
+    public void Retry()
+    {
+        score = 0;
+        BoostValue = 0.7f;
+        failPanel.SetActive(false);
+        endPanel.SetActive(false);
+        Time.timeScale = 1;
+        maintheme = RuntimeManager.CreateInstance("event:/level1_theme");
+        maintheme.start();
     }
 
     void StopAllPlayerEvents()

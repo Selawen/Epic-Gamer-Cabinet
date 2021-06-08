@@ -1,0 +1,52 @@
+{
+    "name": "InputMaster",
+    "maps": [
+        {
+            "name": "UINavigation",
+            "id": "36200189-108a-4c73-9a87-82411b67ea95",
+            "actions": [
+                {
+                    "name": "Stick",
+                    "type": "PassThrough",
+                    "id": "35542525-0087-4d57-85eb-da229523e1ad",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Select",
+                    "type": "Button",
+                    "id": "e24282a4-e83e-4487-a627-8cce02e4728b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "1b83c61f-d2b4-47cc-94eb-d097c2feac0b",
+                    "path": "<Joystick>/stick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Stick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9465b658-3e76-45f1-99d4-96489a962386",
+                    "path": "<HID::DragonRise Inc.   Generic   USB  Joystick  >/button12",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
