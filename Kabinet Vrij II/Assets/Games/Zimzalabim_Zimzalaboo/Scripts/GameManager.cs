@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.InputSystem;
 using FMODUnity;
@@ -12,14 +14,14 @@ public class GameManager : MonoBehaviour
     [Header("UI")]
     public TextMeshProUGUI noteResultText;
     public TextMeshProUGUI scoreText;
-    public TextMeshProUGUI failScore;
-    public TextMeshProUGUI endScore;
 
     public Color perfectColor, awesomeColor, greatColor, goodColor, mehColor, oofColor, missColor;
     public CurvedProgressBar boostBar;
 
-    public GameObject failPanel;
     public GameObject endPanel;
+    public TextMeshProUGUI endScore;
+    public TextMeshProUGUI endTitle;
+
 
     [Header("Boost")]
     [SerializeField] float boostValue = 0.7f;
@@ -240,22 +242,23 @@ public class GameManager : MonoBehaviour
 
     private void EndScreen()
     {
-        if (!failPanel.activeSelf)
-        {
-            Highscores.SaveHighscores(score);
+            Highscores.SaveHighscores(score, "HighscoresZimZim");
             endScore.text = "score: " + score.ToString();
+        endTitle.text = "Success!";
+        endPanel.GetComponent<Image>().tintColor = new Color(0.16f, 0.65f, 0.89f);
             endPanel.SetActive(true);
             Time.timeScale = 0;
             maintheme.release();
             maintheme.clearHandle();
-        }
     }
 
     private void Fail()
     {
-        Highscores.SaveHighscores(score);
-        failScore.text = "score: " + score.ToString();
-        failPanel.SetActive(true);
+        Highscores.SaveHighscores(score, "HighscoresZimZim");
+        endScore.text = "score: " + score.ToString();
+        endTitle.text = "Failed...";
+        endPanel.GetComponent<Image>().tintColor = new Color(0.73f, 0.18f, 0.18f);
+        endPanel.SetActive(true);
         Time.timeScale = 0;
         maintheme.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         maintheme.release();
@@ -264,13 +267,7 @@ public class GameManager : MonoBehaviour
 
     public void Retry()
     {
-        score = 0;
-        BoostValue = 0.7f;
-        failPanel.SetActive(false);
-        endPanel.SetActive(false);
-        Time.timeScale = 1;
-        maintheme = RuntimeManager.CreateInstance("event:/level1_theme");
-        maintheme.start();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     void StopAllPlayerEvents()

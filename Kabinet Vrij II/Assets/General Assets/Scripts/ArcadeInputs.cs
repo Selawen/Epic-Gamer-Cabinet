@@ -69,7 +69,7 @@ public static class ArcadeInputs
     {
         if (Joystick.current == null)
         {
-            return new Vector2(0, 0);
+            return new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         }
         return Joystick.current.stick.ReadValue();
     }
@@ -82,7 +82,7 @@ public static class ArcadeInputs
     {
         if (Joystick.current == null)
         {
-            return false;
+            return Input.GetKey(KeyCode.W);
         }
         return (Joystick.current.stick.ReadValue().y == 1);
     }
@@ -95,7 +95,7 @@ public static class ArcadeInputs
     {
         if (Joystick.current == null)
         {
-            return false;
+            return Input.GetKey(KeyCode.S);
         }
         return (Joystick.current.stick.ReadValue().y == -1);
     }
@@ -108,7 +108,7 @@ public static class ArcadeInputs
     {
         if (Joystick.current == null)
         {
-            return false;
+            return Input.GetKey(KeyCode.A);
         }
         return (Joystick.current.stick.ReadValue().x == -1);
     }
@@ -121,7 +121,7 @@ public static class ArcadeInputs
     {
         if (Joystick.current == null)
         {
-            return false;
+            return Input.GetKey(KeyCode.D);
         }
         return (Joystick.current.stick.ReadValue().x == 1);
     }

@@ -288,7 +288,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2577041086961818010, guid: 6c60ed8ee6f2106469e270a506745a24, type: 3}
       propertyPath: scenepath
-      value: Assets/Games/MainMenus/Zimzalabim_Zimzalaboo.unity
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2577041086961818010, guid: 6c60ed8ee6f2106469e270a506745a24, type: 3}
+      propertyPath: sceneBuildIndex
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5496303173170265530, guid: 6c60ed8ee6f2106469e270a506745a24, type: 3}
       propertyPath: m_text
