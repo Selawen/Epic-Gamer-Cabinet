@@ -28,12 +28,19 @@ public class MenuItems : EditorWindow
             string guid = AssetDatabase.CreateFolder("Assets/Games", gameName);
             string newFolderPath = AssetDatabase.GUIDToAssetPath(guid);
 
+
+            //create menu for game from template            
             Scene newMenuScene;
+            SceneTemplateAsset sceneTemplate = (SceneTemplateAsset)AssetDatabase.LoadAssetAtPath("Assets/General Assets/Scenes/Templates/MenuTemplate.scenetemplate", typeof(SceneTemplateAsset));
+            if (sceneTemplate == null) {Debug.Log("menu template not found"); return;}
+        else newMenuScene = SceneTemplateService.Instantiate(sceneTemplate, true, "Assets/Games/MainMenus/" + gameName + "~Menu.unity").scene;
+
 
             //create menu for game from template
-            SceneTemplateAsset sceneTemplate = (SceneTemplateAsset)AssetDatabase.LoadAssetAtPath("Assets/General Assets/Scenes/Templates/MenuTemplate.scenetemplate", typeof(SceneTemplateAsset));
-            if (sceneTemplate == null) {Debug.Log("template not found"); return;}
-        else newMenuScene = SceneTemplateService.Instantiate(sceneTemplate, true, "Assets/Games/MainMenus/" + gameName + "~Menu.unity").scene;
+            Scene newHighScoreScene;
+            SceneTemplateAsset sceneTemplateHighscore = (SceneTemplateAsset)AssetDatabase.LoadAssetAtPath("Assets/General Assets/Scenes/Templates/HighscoreTemplate.scenetemplate", typeof(SceneTemplateAsset));
+            if (sceneTemplateHighscore == null) { Debug.Log("highscore template not found"); return; }
+            else newHighScoreScene = SceneTemplateService.Instantiate(sceneTemplateHighscore, true, "Assets/Games/Highscores/" + gameName + "Highscores.unity").scene;
 
             GameObject.Find("PlayButton");
 
@@ -42,9 +49,9 @@ public class MenuItems : EditorWindow
             newGameScene.name = gameName;
             EditorSceneManager.SaveScene(newGameScene, path+"/"+gameName+".unity");
             Debug.Log(newGameScene.path);
+           
             //add new scenes to build settings
-
-            string[] ScenesList = new string[] {  newMenuScene.path, newGameScene.path};
+            string[] ScenesList = new string[] {  newMenuScene.path, newHighScoreScene.path, newGameScene.path};
 
             EditorBuildSettingsScene[] original = EditorBuildSettings.scenes;
             EditorBuildSettingsScene[] newSettings = new EditorBuildSettingsScene[original.Length + ScenesList.Length];

@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.InputSystem;
 using FMODUnity;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private int bpm = 93;
+    [SerializeField] private int bpm = 140;
 
     [Header("UI")]
     public TextMeshProUGUI noteResultText;
@@ -16,8 +18,10 @@ public class GameManager : MonoBehaviour
     public Color perfectColor, awesomeColor, greatColor, goodColor, mehColor, oofColor, missColor;
     public CurvedProgressBar boostBar;
 
-    public GameObject failPanel;
-    public GameObject EndPanel;
+    public GameObject endPanel;
+    public TextMeshProUGUI endScore;
+    public TextMeshProUGUI endTitle;
+
 
     [Header("Boost")]
     [SerializeField] float boostValue = 0.7f;
@@ -195,7 +199,7 @@ public class GameManager : MonoBehaviour
         EndScreen();
     }
 
-    public void PlayNote(Note note)
+    private void PlayNote(Note note)
     {
         float d = 0;
 
@@ -229,28 +233,41 @@ public class GameManager : MonoBehaviour
         Destroy(note.gameObject);
     }
 
-    public void MissNote(Note note)
+    private void MissNote(Note note)
     {
         BoostValue -= 0.125f;
         noteResultText.text = "Miss!"; noteResultText.color = missColor;
         Destroy(note.gameObject);
     }
 
-    public void EndScreen()
+    private void EndScreen()
     {
-        EndPanel.SetActive(true);
-        Time.timeScale = 0;
-        maintheme.release();
-        maintheme.clearHandle();
+            Highscores.SaveHighscores(score, "HighscoresZimZim");
+            endScore.text = "score: " + score.ToString();
+        endTitle.text = "Success!";
+        endPanel.GetComponent<Image>().tintColor = new Color(0.16f, 0.65f, 0.89f);
+            endPanel.SetActive(true);
+            Time.timeScale = 0;
+            maintheme.release();
+            maintheme.clearHandle();
     }
 
-    public void Fail()
+    private void Fail()
     {
-        failPanel.SetActive(true);
+        Highscores.SaveHighscores(score, "HighscoresZimZim");
+        endScore.text = "score: " + score.ToString();
+        endTitle.text = "Failed...";
+        endPanel.GetComponent<Image>().tintColor = new Color(0.73f, 0.18f, 0.18f);
+        endPanel.SetActive(true);
         Time.timeScale = 0;
         maintheme.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
         maintheme.release();
         maintheme.clearHandle();
+    }
+
+    public void Retry()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     void StopAllPlayerEvents()
