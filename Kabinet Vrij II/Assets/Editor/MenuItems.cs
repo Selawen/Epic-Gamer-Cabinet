@@ -40,7 +40,7 @@ public class MenuItems : EditorWindow
             Scene newHighScoreScene;
             SceneTemplateAsset sceneTemplateHighscore = (SceneTemplateAsset)AssetDatabase.LoadAssetAtPath("Assets/General Assets/Scenes/Templates/HighscoreTemplate.scenetemplate", typeof(SceneTemplateAsset));
             if (sceneTemplateHighscore == null) { Debug.Log("highscore template not found"); return; }
-            else newHighScoreScene = SceneTemplateService.Instantiate(sceneTemplateHighscore, true, "Assets/Games/Highscores/" + gameName + "Highscores.unity").scene;
+            else newHighScoreScene = SceneTemplateService.Instantiate(sceneTemplateHighscore, true, "Assets/Games/Highscores/" + gameName + "~Highscores.unity").scene;
 
             GameObject.Find("PlayButton");
 

@@ -269,6 +269,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29464c72921873642a570bad006d14d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  toHighscores: 0
+  toGameMenu: 0
+  toGame: 0
   scenepath: Assets/Games/Zimzalabim_Zimzalaboo/ZimZim.unity
   sceneBuildIndex: -1
 --- !u!1 &334110401
@@ -1177,6 +1180,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29464c72921873642a570bad006d14d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  toHighscores: 0
+  toGameMenu: 0
+  toGame: 0
   scenepath: 
   sceneBuildIndex: 0
 --- !u!1 &1518497263
@@ -1325,7 +1331,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29464c72921873642a570bad006d14d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scenepath: Assets/Games/Zimzalabim_Zimzalaboo/HighscoresZimZim.unity
+  toHighscores: 0
+  toGameMenu: 0
+  toGame: 0
+  scenepath: Assets/Games/Highscores/HighscoresZimZim.unity
   sceneBuildIndex: -1
 --- !u!1 &1863364249
 GameObject:

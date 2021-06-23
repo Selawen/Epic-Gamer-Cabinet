@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using System.IO;
 using TMPro;
@@ -15,7 +16,7 @@ public class GameLoader : MonoBehaviour
     [SerializeField] private GameObject gameSelectPanel;
 
     string path = "Assets/Games/MainMenus"; //Main menus of new games are placed in this folder
-    
+
     public void Start()
     {
         //if reload games box is set to true in inspector, 
@@ -25,13 +26,17 @@ public class GameLoader : MonoBehaviour
             RemoveOldButtons();
             GetGames();
             AddButtons();
+            SetSelected();
+            reloadGames = false;
         }
     }
+
+    //private void OnValidate() => Start();
 
     /// <summary>
     /// get references to the main menu scenes found in Assets/Games/MainMenus
     /// </summary>
-    public void GetGames()
+    private void GetGames()
     {
         //get all scenes from folder
         DirectoryInfo dir = new DirectoryInfo(path);
@@ -53,7 +58,7 @@ public class GameLoader : MonoBehaviour
     /// <summary>
     /// remove the buttons that were already there
     /// </summary>
-    public void RemoveOldButtons()
+    private void RemoveOldButtons()
     {
         gameMenuScenes = new List<string>();
         foreach (LoadSceneButton button in gameSelectPanel.GetComponentsInChildren<LoadSceneButton>())
@@ -65,7 +70,7 @@ public class GameLoader : MonoBehaviour
     /// <summary>
     /// make new buttons
     /// </summary>
-    public void AddButtons()
+    private void AddButtons()
     {
         foreach (string gamePath in gameMenuScenes)
         {
@@ -83,4 +88,8 @@ public class GameLoader : MonoBehaviour
         }
     }
 
+    private void SetSelected()
+    {
+        EventSystem.current.firstSelectedGameObject = gameSelectPanel.GetComponentInChildren<LoadSceneButton>().gameObject;
+    }
 }

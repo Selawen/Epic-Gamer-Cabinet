@@ -17,5 +17,50 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Games/Zimzalabim_Zimzalaboo/HighscoresZimZim.unity
     guid: d925e283f2caa2847b9c8582fafb4c35
+  - enabled: 1
+    path: 
+    guid: ad6a403bc66d2b34895f99e592cb19fa
+  - enabled: 1
+    path: 
+    guid: 03453dbfe0a437b4ab625b8b3f6cc02c
+  - enabled: 1
+    path: 
+    guid: 444266c8cb512404280566c5beb74469
+  - enabled: 1
+    path: 
+    guid: cd772dc2d7289c744abc812236274a3d
+  - enabled: 1
+    path: 
+    guid: 681f022671db6974f8671606169303fb
+  - enabled: 1
+    path: 
+    guid: cdc9e644ddbe998458c2b3ff9a73790e
+  - enabled: 1
+    path: 
+    guid: c48c50707c374204792d5e892e07c894
+  - enabled: 1
+    path: 
+    guid: aba1b65e41b7502419e1c3906f32ef43
+  - enabled: 1
+    path: Assets/Games/New Game/New Game.unity
+    guid: cea2f991ef876f04a8f77fe40f2c0516
+  - enabled: 1
+    path: 
+    guid: 979a886231514fc42b8f0542b7e66d04
+  - enabled: 1
+    path: 
+    guid: 2646c2f105d3e40488a9c5ac41b3b118
+  - enabled: 1
+    path: Assets/Games/New Game/New Game.unity
+    guid: cea2f991ef876f04a8f77fe40f2c0516
+  - enabled: 1
+    path: Assets/Games/MainMenus/Example~Menu.unity
+    guid: 9c241ae9e8c075e44ba18cda2152cb83
+  - enabled: 1
+    path: Assets/Games/Highscores/Example~Highscores.unity
+    guid: ba091f93e0c9e874fb8ef6ae969276a0
+  - enabled: 1
+    path: Assets/Games/Example/Example.unity
+    guid: e20e81d500d67f546a5a1d9db09ee25c
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 8efbdccb0f3caf34dadfc6b542f3129f, type: 2}
